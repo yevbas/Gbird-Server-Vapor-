@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="SadaptizerUIKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xmp-bJ-CmL">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8x-Fx-K8i">
+                                <rect key="frame" x="37" y="248" width="340" height="400"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQJ-xa-MC2">
+                                        <rect key="frame" x="0.0" y="0.0" width="340" height="400"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gyX-Rl-rOQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="340" height="400"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="systemUltraThinMaterialLight"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="dQJ-xa-MC2" firstAttribute="leading" secondItem="s8x-Fx-K8i" secondAttribute="leading" id="7sb-qT-rYf"/>
+                                    <constraint firstAttribute="height" constant="400" id="DMX-Or-gwD"/>
+                                    <constraint firstAttribute="trailing" secondItem="dQJ-xa-MC2" secondAttribute="trailing" id="SLm-lV-tOf"/>
+                                    <constraint firstItem="dQJ-xa-MC2" firstAttribute="top" secondItem="s8x-Fx-K8i" secondAttribute="top" id="ZBd-6N-k9n"/>
+                                    <constraint firstAttribute="width" constant="340" id="aM2-rI-9hp"/>
+                                    <constraint firstAttribute="bottom" secondItem="dQJ-xa-MC2" secondAttribute="bottom" id="hTZ-HU-wge"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="34"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="setCornerRadius">
+                                        <real key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PjH-wu-Bpi">
+                                <rect key="frame" x="20" y="768" width="374" height="55"/>
+                                <color key="backgroundColor" red="0.69978307719999999" green="0.81184895830000003" blue="0.60524292729999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="dQo-XP-R4F"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oDi-3R-dCA"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wug-re-Fgp">
+                                <rect key="frame" x="20" y="64" width="374" height="44"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="xx6-Lz-1V0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                        <constraints>
+                            <constraint firstItem="PjH-wu-Bpi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="1w1-Cw-5i0"/>
+                            <constraint firstItem="s8x-Fx-K8i" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Btp-1n-2EB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Xmp-bJ-CmL" secondAttribute="bottom" constant="350" id="Dpf-fD-tbj"/>
+                            <constraint firstItem="s8x-Fx-K8i" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IBd-hU-6uw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PjH-wu-Bpi" secondAttribute="bottom" constant="39" id="LFm-U6-fhX"/>
+                            <constraint firstItem="Wug-re-Fgp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Lu2-JS-y2L"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wug-re-Fgp" secondAttribute="trailing" constant="20" id="UBx-Yq-1dS"/>
+                            <constraint firstItem="Xmp-bJ-CmL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="340" id="VUZ-45-AU9"/>
+                            <constraint firstItem="Wug-re-Fgp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="gKE-7d-z7D"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PjH-wu-Bpi" secondAttribute="trailing" constant="20" id="hR6-xB-W41"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xmp-bJ-CmL" secondAttribute="trailing" constant="87" id="iQy-l7-mDS"/>
+                            <constraint firstItem="Xmp-bJ-CmL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="ocy-4M-UJz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="animationView" destination="Wug-re-Fgp" id="l5A-2V-gon"/>
+                        <outlet property="animationViewTopConstraint" destination="gKE-7d-z7D" id="gtD-Jm-Z7K"/>
+                        <outlet property="myView" destination="s8x-Fx-K8i" id="bVk-Xq-BMs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30" y="80"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

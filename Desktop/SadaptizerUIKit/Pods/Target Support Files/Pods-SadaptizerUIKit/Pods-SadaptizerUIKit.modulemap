@@ -1,0 +1,6 @@
+framework module Pods_SadaptizerUIKit {
+  umbrella header "Pods-SadaptizerUIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

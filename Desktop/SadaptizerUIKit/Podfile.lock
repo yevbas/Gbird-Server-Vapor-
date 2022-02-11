@@ -1,0 +1,24 @@
+PODS:
+  - NeedleFoundation (0.17.2)
+  - R.swift (6.1.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
+
+DEPENDENCIES:
+  - NeedleFoundation
+  - R.swift
+
+SPEC REPOS:
+  trunk:
+    - NeedleFoundation
+    - R.swift
+    - R.swift.Library
+
+SPEC CHECKSUMS:
+  NeedleFoundation: 36cfaea9ae9eb527a796f5c1df19296c722666b8
+  R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+
+PODFILE CHECKSUM: a8f51897d08590a8371c438b1c8e51232766ad15
+
+COCOAPODS: 1.11.2
