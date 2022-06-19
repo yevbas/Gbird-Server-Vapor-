@@ -1,0 +1,22 @@
+{
+order id: 1
+order_id: 1
+client_name: Jackson
+client_phone: +48787309673
+address: aasdasd
+positions: 
+   [ 
+    - Section: 0
+    - Position_name: 0
+
+
+    - Section: 0
+    - Position_name: 0
+
+
+    - Section: 1
+    - Position_name: 2
+
+
+]
+}

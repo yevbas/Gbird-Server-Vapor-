@@ -1,0 +1,886 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5622A2D427990199CAE4E8B7 /* Pods_NeedleSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60E7D85D3605DD20B891D230 /* Pods_NeedleSwiftUI.framework */; };
+		BC93D2F826AEBCF2003B3D08 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BC93D2F726AEBCF2003B3D08 /* README.md */; };
+		BCD350BD26A9807F00F0C60F /* NeedleSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD350BC26A9807F00F0C60F /* NeedleSwiftUIApp.swift */; };
+		BCD350C126A9807F00F0C60F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD350C026A9807F00F0C60F /* Assets.xcassets */; };
+		BCD350C426A9807F00F0C60F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD350C326A9807F00F0C60F /* Preview Assets.xcassets */; };
+		BCD350CF26A9808000F0C60F /* NeedleSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD350CE26A9808000F0C60F /* NeedleSwiftUITests.swift */; };
+		BCD350DA26A9808000F0C60F /* NeedleSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD350D926A9808000F0C60F /* NeedleSwiftUIUITests.swift */; };
+		BCD350E926A983C600F0C60F /* NeedleGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD350E826A983C600F0C60F /* NeedleGenerated.swift */; };
+		BCD350EC26A983FF00F0C60F /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD350EB26A983FF00F0C60F /* RootComponent.swift */; };
+		BCD350EE26A9849200F0C60F /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD350ED26A9849200F0C60F /* RootViewModel.swift */; };
+		BCD350F026A9851500F0C60F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD350EF26A9851500F0C60F /* RootView.swift */; };
+		BCD350F326A98C6200F0C60F /* RegisterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD350F226A98C6200F0C60F /* RegisterComponent.swift */; };
+		BCD350F526A98E4800F0C60F /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD350F426A98E4800F0C60F /* RegisterViewModel.swift */; };
+		BCD350F726A98E7D00F0C60F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD350F626A98E7D00F0C60F /* RegisterView.swift */; };
+		BCD350FA26A9A1B400F0C60F /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD350F926A9A1B400F0C60F /* UserDefaults+Extension.swift */; };
+		BCD3510326A9A5BA00F0C60F /* UserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3510226A9A5BA00F0C60F /* UserProvider.swift */; };
+		BCD3510626A9B0F500F0C60F /* LoginComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3510526A9B0F500F0C60F /* LoginComponent.swift */; };
+		BCD3510826A9B10800F0C60F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3510726A9B10800F0C60F /* LoginViewModel.swift */; };
+		BCD3510A26A9B11400F0C60F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3510926A9B11400F0C60F /* LoginView.swift */; };
+		BCD3510C26A9B95900F0C60F /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3510B26A9B95900F0C60F /* View+Extension.swift */; };
+		BCD3511026AABB1A00F0C60F /* TutorialComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3510F26AABB1A00F0C60F /* TutorialComponent.swift */; };
+		BCD3511226AABB2F00F0C60F /* TutorialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3511126AABB2F00F0C60F /* TutorialViewModel.swift */; };
+		BCD3511426AABB3F00F0C60F /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3511326AABB3F00F0C60F /* TutorialView.swift */; };
+		BCD3511726AAE11600F0C60F /* HomeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3511626AAE11600F0C60F /* HomeComponent.swift */; };
+		BCD3511926AAE12300F0C60F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3511826AAE12300F0C60F /* HomeViewModel.swift */; };
+		BCD3511B26AAE12F00F0C60F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3511A26AAE12F00F0C60F /* HomeView.swift */; };
+		BEBD1C1946670578F2E3FE39 /* Pods_NeedleSwiftUI_NeedleSwiftUIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCA9180330CB713012B3EFE /* Pods_NeedleSwiftUI_NeedleSwiftUIUITests.framework */; };
+		CDD7CE3B08D36701A0AF188F /* Pods_NeedleSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD05ABED1CD4109B330C8E8A /* Pods_NeedleSwiftUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BCD350CB26A9808000F0C60F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCD350B126A9807F00F0C60F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCD350B826A9807F00F0C60F;
+			remoteInfo = NeedleSwiftUI;
+		};
+		BCD350D626A9808000F0C60F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCD350B126A9807F00F0C60F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCD350B826A9807F00F0C60F;
+			remoteInfo = NeedleSwiftUI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		125CC5FA1FD2D3CC0F56EA2A /* Pods-NeedleSwiftUI-NeedleSwiftUIUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeedleSwiftUI-NeedleSwiftUIUITests.release.xcconfig"; path = "Target Support Files/Pods-NeedleSwiftUI-NeedleSwiftUIUITests/Pods-NeedleSwiftUI-NeedleSwiftUIUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3CE3F263815360D6065785F9 /* Pods-NeedleSwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeedleSwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-NeedleSwiftUI/Pods-NeedleSwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
+		3DCA9180330CB713012B3EFE /* Pods_NeedleSwiftUI_NeedleSwiftUIUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeedleSwiftUI_NeedleSwiftUIUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		605094BACAF21F44216F65B6 /* Pods-NeedleSwiftUI-NeedleSwiftUIUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeedleSwiftUI-NeedleSwiftUIUITests.debug.xcconfig"; path = "Target Support Files/Pods-NeedleSwiftUI-NeedleSwiftUIUITests/Pods-NeedleSwiftUI-NeedleSwiftUIUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		60E7D85D3605DD20B891D230 /* Pods_NeedleSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeedleSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		714478E9B2481FDC139C2188 /* Pods-NeedleSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeedleSwiftUITests.release.xcconfig"; path = "Target Support Files/Pods-NeedleSwiftUITests/Pods-NeedleSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BC93D2F726AEBCF2003B3D08 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BCD350B926A9807F00F0C60F /* NeedleSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeedleSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD350BC26A9807F00F0C60F /* NeedleSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedleSwiftUIApp.swift; sourceTree = "<group>"; };
+		BCD350C026A9807F00F0C60F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCD350C326A9807F00F0C60F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BCD350C526A9807F00F0C60F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCD350CA26A9808000F0C60F /* NeedleSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeedleSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD350CE26A9808000F0C60F /* NeedleSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedleSwiftUITests.swift; sourceTree = "<group>"; };
+		BCD350D026A9808000F0C60F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCD350D526A9808000F0C60F /* NeedleSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeedleSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD350D926A9808000F0C60F /* NeedleSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedleSwiftUIUITests.swift; sourceTree = "<group>"; };
+		BCD350DB26A9808000F0C60F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCD350E826A983C600F0C60F /* NeedleGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedleGenerated.swift; sourceTree = "<group>"; };
+		BCD350EB26A983FF00F0C60F /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
+		BCD350ED26A9849200F0C60F /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		BCD350EF26A9851500F0C60F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		BCD350F226A98C6200F0C60F /* RegisterComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterComponent.swift; sourceTree = "<group>"; };
+		BCD350F426A98E4800F0C60F /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		BCD350F626A98E7D00F0C60F /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		BCD350F926A9A1B400F0C60F /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		BCD3510226A9A5BA00F0C60F /* UserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProvider.swift; sourceTree = "<group>"; };
+		BCD3510526A9B0F500F0C60F /* LoginComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginComponent.swift; sourceTree = "<group>"; };
+		BCD3510726A9B10800F0C60F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		BCD3510926A9B11400F0C60F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BCD3510B26A9B95900F0C60F /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		BCD3510F26AABB1A00F0C60F /* TutorialComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialComponent.swift; sourceTree = "<group>"; };
+		BCD3511126AABB2F00F0C60F /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModel.swift; sourceTree = "<group>"; };
+		BCD3511326AABB3F00F0C60F /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		BCD3511626AAE11600F0C60F /* HomeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeComponent.swift; sourceTree = "<group>"; };
+		BCD3511826AAE12300F0C60F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		BCD3511A26AAE12F00F0C60F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C751C0A5F41E879994E1E839 /* Pods-NeedleSwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeedleSwiftUI.release.xcconfig"; path = "Target Support Files/Pods-NeedleSwiftUI/Pods-NeedleSwiftUI.release.xcconfig"; sourceTree = "<group>"; };
+		CD05ABED1CD4109B330C8E8A /* Pods_NeedleSwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeedleSwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBD897E106774AEFEE6DE833 /* Pods-NeedleSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeedleSwiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-NeedleSwiftUITests/Pods-NeedleSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BCD350B626A9807F00F0C60F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5622A2D427990199CAE4E8B7 /* Pods_NeedleSwiftUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD350C726A9808000F0C60F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDD7CE3B08D36701A0AF188F /* Pods_NeedleSwiftUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD350D226A9808000F0C60F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEBD1C1946670578F2E3FE39 /* Pods_NeedleSwiftUI_NeedleSwiftUIUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		12B3E0ED09437FB6D894D977 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3CE3F263815360D6065785F9 /* Pods-NeedleSwiftUI.debug.xcconfig */,
+				C751C0A5F41E879994E1E839 /* Pods-NeedleSwiftUI.release.xcconfig */,
+				605094BACAF21F44216F65B6 /* Pods-NeedleSwiftUI-NeedleSwiftUIUITests.debug.xcconfig */,
+				125CC5FA1FD2D3CC0F56EA2A /* Pods-NeedleSwiftUI-NeedleSwiftUIUITests.release.xcconfig */,
+				EBD897E106774AEFEE6DE833 /* Pods-NeedleSwiftUITests.debug.xcconfig */,
+				714478E9B2481FDC139C2188 /* Pods-NeedleSwiftUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BCD350B026A9807F00F0C60F = {
+			isa = PBXGroup;
+			children = (
+				BC93D2F726AEBCF2003B3D08 /* README.md */,
+				BCD350BB26A9807F00F0C60F /* NeedleSwiftUI */,
+				BCD350CD26A9808000F0C60F /* NeedleSwiftUITests */,
+				BCD350D826A9808000F0C60F /* NeedleSwiftUIUITests */,
+				BCD350BA26A9807F00F0C60F /* Products */,
+				12B3E0ED09437FB6D894D977 /* Pods */,
+				FBFEE5A65EF2379116FC23BF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BCD350BA26A9807F00F0C60F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCD350B926A9807F00F0C60F /* NeedleSwiftUI.app */,
+				BCD350CA26A9808000F0C60F /* NeedleSwiftUITests.xctest */,
+				BCD350D526A9808000F0C60F /* NeedleSwiftUIUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCD350BB26A9807F00F0C60F /* NeedleSwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				BCD350E826A983C600F0C60F /* NeedleGenerated.swift */,
+				BCD350BC26A9807F00F0C60F /* NeedleSwiftUIApp.swift */,
+				BCD3510226A9A5BA00F0C60F /* UserProvider.swift */,
+				BCD350F826A99FB200F0C60F /* Extensions */,
+				BCD3510E26AABB0300F0C60F /* Screens */,
+				BCD350C026A9807F00F0C60F /* Assets.xcassets */,
+				BCD350C526A9807F00F0C60F /* Info.plist */,
+				BCD350C226A9807F00F0C60F /* Preview Content */,
+			);
+			path = NeedleSwiftUI;
+			sourceTree = "<group>";
+		};
+		BCD350C226A9807F00F0C60F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BCD350C326A9807F00F0C60F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BCD350CD26A9808000F0C60F /* NeedleSwiftUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BCD350CE26A9808000F0C60F /* NeedleSwiftUITests.swift */,
+				BCD350D026A9808000F0C60F /* Info.plist */,
+			);
+			path = NeedleSwiftUITests;
+			sourceTree = "<group>";
+		};
+		BCD350D826A9808000F0C60F /* NeedleSwiftUIUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BCD350D926A9808000F0C60F /* NeedleSwiftUIUITests.swift */,
+				BCD350DB26A9808000F0C60F /* Info.plist */,
+			);
+			path = NeedleSwiftUIUITests;
+			sourceTree = "<group>";
+		};
+		BCD350EA26A983D600F0C60F /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				BCD350EB26A983FF00F0C60F /* RootComponent.swift */,
+				BCD350ED26A9849200F0C60F /* RootViewModel.swift */,
+				BCD350EF26A9851500F0C60F /* RootView.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		BCD350F126A98C4B00F0C60F /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				BCD350F226A98C6200F0C60F /* RegisterComponent.swift */,
+				BCD350F426A98E4800F0C60F /* RegisterViewModel.swift */,
+				BCD350F626A98E7D00F0C60F /* RegisterView.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		BCD350F826A99FB200F0C60F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BCD350F926A9A1B400F0C60F /* UserDefaults+Extension.swift */,
+				BCD3510B26A9B95900F0C60F /* View+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BCD3510426A9B0D800F0C60F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BCD3510526A9B0F500F0C60F /* LoginComponent.swift */,
+				BCD3510726A9B10800F0C60F /* LoginViewModel.swift */,
+				BCD3510926A9B11400F0C60F /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		BCD3510D26AABAEB00F0C60F /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				BCD3510F26AABB1A00F0C60F /* TutorialComponent.swift */,
+				BCD3511126AABB2F00F0C60F /* TutorialViewModel.swift */,
+				BCD3511326AABB3F00F0C60F /* TutorialView.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		BCD3510E26AABB0300F0C60F /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				BCD3511526AAE10500F0C60F /* Home */,
+				BCD3510D26AABAEB00F0C60F /* Tutorial */,
+				BCD3510426A9B0D800F0C60F /* Login */,
+				BCD350F126A98C4B00F0C60F /* Register */,
+				BCD350EA26A983D600F0C60F /* Root */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		BCD3511526AAE10500F0C60F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BCD3511626AAE11600F0C60F /* HomeComponent.swift */,
+				BCD3511826AAE12300F0C60F /* HomeViewModel.swift */,
+				BCD3511A26AAE12F00F0C60F /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FBFEE5A65EF2379116FC23BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60E7D85D3605DD20B891D230 /* Pods_NeedleSwiftUI.framework */,
+				3DCA9180330CB713012B3EFE /* Pods_NeedleSwiftUI_NeedleSwiftUIUITests.framework */,
+				CD05ABED1CD4109B330C8E8A /* Pods_NeedleSwiftUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BCD350B826A9807F00F0C60F /* NeedleSwiftUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCD350DE26A9808000F0C60F /* Build configuration list for PBXNativeTarget "NeedleSwiftUI" */;
+			buildPhases = (
+				983C32C44374F075485C4D39 /* [CP] Check Pods Manifest.lock */,
+				BCD350B526A9807F00F0C60F /* Sources */,
+				BCD350B626A9807F00F0C60F /* Frameworks */,
+				BCD350B726A9807F00F0C60F /* Resources */,
+				4678724E7FC9D09BDD578C83 /* [CP] Embed Pods Frameworks */,
+				BCD350E726A9834E00F0C60F /* Needle */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NeedleSwiftUI;
+			productName = NeedleSwiftUI;
+			productReference = BCD350B926A9807F00F0C60F /* NeedleSwiftUI.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BCD350C926A9808000F0C60F /* NeedleSwiftUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCD350E126A9808000F0C60F /* Build configuration list for PBXNativeTarget "NeedleSwiftUITests" */;
+			buildPhases = (
+				294651A53DA6EEF63060BB3C /* [CP] Check Pods Manifest.lock */,
+				BCD350C626A9808000F0C60F /* Sources */,
+				BCD350C726A9808000F0C60F /* Frameworks */,
+				BCD350C826A9808000F0C60F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCD350CC26A9808000F0C60F /* PBXTargetDependency */,
+			);
+			name = NeedleSwiftUITests;
+			productName = NeedleSwiftUITests;
+			productReference = BCD350CA26A9808000F0C60F /* NeedleSwiftUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BCD350D426A9808000F0C60F /* NeedleSwiftUIUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCD350E426A9808000F0C60F /* Build configuration list for PBXNativeTarget "NeedleSwiftUIUITests" */;
+			buildPhases = (
+				D18902C8423B0CAD1A7B8A58 /* [CP] Check Pods Manifest.lock */,
+				BCD350D126A9808000F0C60F /* Sources */,
+				BCD350D226A9808000F0C60F /* Frameworks */,
+				BCD350D326A9808000F0C60F /* Resources */,
+				DE947732C1FCEBD769D2DC5F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCD350D726A9808000F0C60F /* PBXTargetDependency */,
+			);
+			name = NeedleSwiftUIUITests;
+			productName = NeedleSwiftUIUITests;
+			productReference = BCD350D526A9808000F0C60F /* NeedleSwiftUIUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BCD350B126A9807F00F0C60F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					BCD350B826A9807F00F0C60F = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					BCD350C926A9808000F0C60F = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = BCD350B826A9807F00F0C60F;
+					};
+					BCD350D426A9808000F0C60F = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = BCD350B826A9807F00F0C60F;
+					};
+				};
+			};
+			buildConfigurationList = BCD350B426A9807F00F0C60F /* Build configuration list for PBXProject "NeedleSwiftUI" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BCD350B026A9807F00F0C60F;
+			productRefGroup = BCD350BA26A9807F00F0C60F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BCD350B826A9807F00F0C60F /* NeedleSwiftUI */,
+				BCD350C926A9808000F0C60F /* NeedleSwiftUITests */,
+				BCD350D426A9808000F0C60F /* NeedleSwiftUIUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCD350B726A9807F00F0C60F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC93D2F826AEBCF2003B3D08 /* README.md in Resources */,
+				BCD350C426A9807F00F0C60F /* Preview Assets.xcassets in Resources */,
+				BCD350C126A9807F00F0C60F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD350C826A9808000F0C60F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD350D326A9808000F0C60F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		294651A53DA6EEF63060BB3C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NeedleSwiftUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4678724E7FC9D09BDD578C83 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NeedleSwiftUI/Pods-NeedleSwiftUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NeedleSwiftUI/Pods-NeedleSwiftUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NeedleSwiftUI/Pods-NeedleSwiftUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		983C32C44374F075485C4D39 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NeedleSwiftUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCD350E726A9834E00F0C60F /* Needle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Needle;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export SOURCEKIT_LOGGING=0 && needle generate $SRCROOT/$TARGETNAME/NeedleGenerated.swift $SRCROOT/$TARGETNAME\n";
+		};
+		D18902C8423B0CAD1A7B8A58 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NeedleSwiftUI-NeedleSwiftUIUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE947732C1FCEBD769D2DC5F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NeedleSwiftUI-NeedleSwiftUIUITests/Pods-NeedleSwiftUI-NeedleSwiftUIUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NeedleSwiftUI-NeedleSwiftUIUITests/Pods-NeedleSwiftUI-NeedleSwiftUIUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NeedleSwiftUI-NeedleSwiftUIUITests/Pods-NeedleSwiftUI-NeedleSwiftUIUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCD350B526A9807F00F0C60F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD3511926AAE12300F0C60F /* HomeViewModel.swift in Sources */,
+				BCD3510326A9A5BA00F0C60F /* UserProvider.swift in Sources */,
+				BCD350EE26A9849200F0C60F /* RootViewModel.swift in Sources */,
+				BCD3511226AABB2F00F0C60F /* TutorialViewModel.swift in Sources */,
+				BCD3511026AABB1A00F0C60F /* TutorialComponent.swift in Sources */,
+				BCD350F026A9851500F0C60F /* RootView.swift in Sources */,
+				BCD350F526A98E4800F0C60F /* RegisterViewModel.swift in Sources */,
+				BCD350EC26A983FF00F0C60F /* RootComponent.swift in Sources */,
+				BCD3510626A9B0F500F0C60F /* LoginComponent.swift in Sources */,
+				BCD350BD26A9807F00F0C60F /* NeedleSwiftUIApp.swift in Sources */,
+				BCD3511426AABB3F00F0C60F /* TutorialView.swift in Sources */,
+				BCD3511726AAE11600F0C60F /* HomeComponent.swift in Sources */,
+				BCD350F726A98E7D00F0C60F /* RegisterView.swift in Sources */,
+				BCD3511B26AAE12F00F0C60F /* HomeView.swift in Sources */,
+				BCD3510826A9B10800F0C60F /* LoginViewModel.swift in Sources */,
+				BCD350F326A98C6200F0C60F /* RegisterComponent.swift in Sources */,
+				BCD3510A26A9B11400F0C60F /* LoginView.swift in Sources */,
+				BCD350FA26A9A1B400F0C60F /* UserDefaults+Extension.swift in Sources */,
+				BCD3510C26A9B95900F0C60F /* View+Extension.swift in Sources */,
+				BCD350E926A983C600F0C60F /* NeedleGenerated.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD350C626A9808000F0C60F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD350CF26A9808000F0C60F /* NeedleSwiftUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD350D126A9808000F0C60F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD350DA26A9808000F0C60F /* NeedleSwiftUIUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BCD350CC26A9808000F0C60F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCD350B826A9807F00F0C60F /* NeedleSwiftUI */;
+			targetProxy = BCD350CB26A9808000F0C60F /* PBXContainerItemProxy */;
+		};
+		BCD350D726A9808000F0C60F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCD350B826A9807F00F0C60F /* NeedleSwiftUI */;
+			targetProxy = BCD350D626A9808000F0C60F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BCD350DC26A9808000F0C60F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BCD350DD26A9808000F0C60F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BCD350DF26A9808000F0C60F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CE3F263815360D6065785F9 /* Pods-NeedleSwiftUI.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"NeedleSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = VHGRSDC2NJ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = NeedleSwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.mikdev.NeedleSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BCD350E026A9808000F0C60F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C751C0A5F41E879994E1E839 /* Pods-NeedleSwiftUI.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"NeedleSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = VHGRSDC2NJ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = NeedleSwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.mikdev.NeedleSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BCD350E226A9808000F0C60F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBD897E106774AEFEE6DE833 /* Pods-NeedleSwiftUITests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VHGRSDC2NJ;
+				INFOPLIST_FILE = NeedleSwiftUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.mikdev.NeedleSwiftUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NeedleSwiftUI.app/NeedleSwiftUI";
+			};
+			name = Debug;
+		};
+		BCD350E326A9808000F0C60F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 714478E9B2481FDC139C2188 /* Pods-NeedleSwiftUITests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VHGRSDC2NJ;
+				INFOPLIST_FILE = NeedleSwiftUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.mikdev.NeedleSwiftUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NeedleSwiftUI.app/NeedleSwiftUI";
+			};
+			name = Release;
+		};
+		BCD350E526A9808000F0C60F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 605094BACAF21F44216F65B6 /* Pods-NeedleSwiftUI-NeedleSwiftUIUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VHGRSDC2NJ;
+				INFOPLIST_FILE = NeedleSwiftUIUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.mikdev.NeedleSwiftUIUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NeedleSwiftUI;
+			};
+			name = Debug;
+		};
+		BCD350E626A9808000F0C60F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 125CC5FA1FD2D3CC0F56EA2A /* Pods-NeedleSwiftUI-NeedleSwiftUIUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VHGRSDC2NJ;
+				INFOPLIST_FILE = NeedleSwiftUIUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.mikdev.NeedleSwiftUIUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NeedleSwiftUI;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BCD350B426A9807F00F0C60F /* Build configuration list for PBXProject "NeedleSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCD350DC26A9808000F0C60F /* Debug */,
+				BCD350DD26A9808000F0C60F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCD350DE26A9808000F0C60F /* Build configuration list for PBXNativeTarget "NeedleSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCD350DF26A9808000F0C60F /* Debug */,
+				BCD350E026A9808000F0C60F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCD350E126A9808000F0C60F /* Build configuration list for PBXNativeTarget "NeedleSwiftUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCD350E226A9808000F0C60F /* Debug */,
+				BCD350E326A9808000F0C60F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCD350E426A9808000F0C60F /* Build configuration list for PBXNativeTarget "NeedleSwiftUIUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCD350E526A9808000F0C60F /* Debug */,
+				BCD350E626A9808000F0C60F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BCD350B126A9807F00F0C60F /* Project object */;
+}

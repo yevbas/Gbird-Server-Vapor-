@@ -1,0 +1,74 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXFileReference section */
+		EE3EB897276E525000E04173 /* TerminalApp.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TerminalApp.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		EE3EB890276E523800E04173 = {
+			isa = PBXGroup;
+			children = (
+				EE3EB897276E525000E04173 /* TerminalApp.playground */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		EE3EB891276E523800E04173 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1310;
+			};
+			buildConfigurationList = EE3EB894276E523800E04173 /* Build configuration list for PBXProject "TerminalApp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE3EB890276E523800E04173;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		EE3EB895276E523800E04173 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		EE3EB896276E523800E04173 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE3EB894276E523800E04173 /* Build configuration list for PBXProject "TerminalApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE3EB895276E523800E04173 /* Debug */,
+				EE3EB896276E523800E04173 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE3EB891276E523800E04173 /* Project object */;
+}
