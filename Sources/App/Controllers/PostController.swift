@@ -19,6 +19,7 @@ struct PostController: RouteCollection {
         return []
     }
     
+    
     // posts/:ownerID
     func indexByOwnerID(req: Request) async throws -> [Post] {
         guard let parametr = req.parameters.get("ownerID") else {
@@ -38,8 +39,8 @@ struct PostController: RouteCollection {
         var response = Response()
         
         if let sql = req.db as? SQLDatabase {
-            let users = try await sql.raw("SELECT * FROM users")
-                .all(decoding: User.self)
+            let usersInfo = try await sql.raw("SELECT * FROM userinfo")
+                .all(decoding: UserInfo.self)
             
             guard let byteBuffer = req.body.data else {
                 response.error = "No body was provided!"
@@ -47,15 +48,12 @@ struct PostController: RouteCollection {
             }
             let post = try JSONDecoder().decode(Post.self, from: Data(buffer: byteBuffer))
             
-            guard let owner = users.filter({ $0.id == post.ownerID }).first else {
+            guard let userInfo = usersInfo.filter({ $0.userID == post.ownerID }).first else {
                 response.error = "Owner didn't find!"
                 return response
             }
             
-            post.feedbackIDs = []
-            post.likes = 0
-            post.timeInterval = Date().timeIntervalSince1970
-            
+            // SAVING POST
             try await post.save(on: req.db)
             
             guard let postID = post.id?.uuidString else {
@@ -63,13 +61,10 @@ struct PostController: RouteCollection {
                 return response
             }
             
-            if owner.posts == nil {
-                owner.posts = [postID]
-            } else {
-                owner.posts?.append(postID)
-            }
+            userInfo.postsIDs.append(postID)
             
-            try await owner.update(on: req.db)
+            // UPDATING USER POSTS
+            try await userInfo.update(on: req.db)
             
             response.success = "ok"
             return response

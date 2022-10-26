@@ -25,22 +25,19 @@ final class User: Model, Content {
     var password: String
     @Field(key: "login")
     var login: String
-    @Field(key: "posts")
-    var posts: [String]?
     
     init() {}
     
+    #warning("This init is what should we provide in request body !!!")
     init(id: UUID? = nil,
          email: String,
          password: String,
-         login: String,
-         posts: [String]? = nil
+         login: String
     ){
         self.id = id
         self.email = email
         self.password = password
         self.login = login
-        self.posts = posts
     }
     
 }

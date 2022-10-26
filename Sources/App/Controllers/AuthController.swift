@@ -35,16 +35,12 @@ struct AuthCollection: RouteCollection {
             }
             let authCreds = try JSONDecoder().decode(AuthCollection.AuthCredentials.self, from: Data(buffer: byteBuffer))
             
-            guard users.contains(where: { $0.email == authCreds.email }) else {
-                response.error = "User with whis email don't exists"
-                return response
-            }
-            guard users.contains(where: { $0.password == authCreds.password }) else {
-                response.error = "Password is incorrect!"
+            guard let user = users.first(where: { $0.email == authCreds.email && $0.password == authCreds.password }) else {
+                response.error = "Email or password is incorrect!"
                 return response
             }
             
-            response.success = "ok"
+            response.success = user.id?.uuidString
             return response
         }
         

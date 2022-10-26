@@ -17,6 +17,7 @@ public func configure(_ app: Application) throws {
     
 
     app.migrations.add(UserMigration())
+    app.migrations.add(UserInfoMigration())
     app.migrations.add(PostMigration())
     
     try app.autoMigrate().wait()

@@ -12,6 +12,7 @@ struct UserController: RouteCollection {
         }
     }
     
+    // users
     func index(req: Request) async throws -> [User] {
         if let sql = req.db as? SQLDatabase {
            return try await sql.raw("SELECT * FROM users")
@@ -20,6 +21,7 @@ struct UserController: RouteCollection {
         return []
     }
     
+    // users
     func create(req: Request) async throws -> Response {
         var response = Response()
         
@@ -47,7 +49,11 @@ struct UserController: RouteCollection {
                 return response
             }
             try await user.save(on: req.db)
-            response.success = "ok"
+            
+            let userInfo = UserInfo(userID: user.id ?? .init())
+            
+            try await userInfo.save(on: req.db)
+            response.success = user.id?.uuidString ?? "status ok, no user id..."
             return response
         }
         
