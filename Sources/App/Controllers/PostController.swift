@@ -19,6 +19,33 @@ struct PostController: RouteCollection {
         return []
     }
     
+    // followingposts/:followerID
+//    func indexByFollowersID(req: Request) async throws -> [Post] {
+//        guard let followerID = req.parameters.get("followerID") else {
+//            throw Abort(.notFound)
+//        }
+//
+//        if let sql = req.db as? SQLDatabase {
+//            let usersInfo = try await sql.raw("SELECT * FROM userinfo")
+//                .all(decoding: UserInfo.self)
+//                .filter { $0.userID.uuidString == followerID }
+//                .first
+//
+//
+//            var posts = [Post]()
+//
+//            usersInfo?.folowingsIDs.forEach { followingID in
+//                try await sql.raw("SELECT * FROM users")
+//                    .all(decoding: UserInfo.self)
+//                    .filter { $0.userID.uuidStringq == followerID }
+//            }
+//
+//
+//        }
+        
+//        return []
+//    }
+    
     
     // posts/:ownerID
     func indexByOwnerID(req: Request) async throws -> [Post] {
@@ -52,6 +79,9 @@ struct PostController: RouteCollection {
                 response.error = "Owner didn't find!"
                 return response
             }
+            
+            // SET CURRENT DATE FOR POST
+            post.timeInterval = Date().timeIntervalSince1970
             
             // SAVING POST
             try await post.save(on: req.db)

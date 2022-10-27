@@ -50,7 +50,7 @@ struct UserController: RouteCollection {
             }
             try await user.save(on: req.db)
             
-            let userInfo = UserInfo(userID: user.id ?? .init())
+            let userInfo = UserInfo(userID: user.id ?? .init(), userName: user.login)
             
             try await userInfo.save(on: req.db)
             response.success = user.id?.uuidString ?? "status ok, no user id..."

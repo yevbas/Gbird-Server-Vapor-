@@ -17,10 +17,14 @@ final class UserInfo: Model, Content {
     
     @Field(key: "userID")
     var userID: UUID
+    @Field(key: "userName")
+    var userName: String
     @Field(key: "postsIDs")
     var postsIDs: [String]
     @Field(key: "folowingsIDs")
     var folowingsIDs: [String]
+    @Field(key: "folowersIDs")
+    var folowersIDs: [String]
     
     // folowersCount
     // folowingsCount
@@ -29,13 +33,18 @@ final class UserInfo: Model, Content {
     
     init(id: UUID? = nil,
          userID: UUID,
+         
+         userName: String = "",
          postsIDs: [String] = [],
-         folowingsIDs: [String] = []
+         folowingsIDs: [String] = [],
+         folowersIDs: [String] = []
     ){
         self.id = id
         self.userID = userID
+        self.userName = userName
         self.postsIDs = postsIDs
         self.folowingsIDs = folowingsIDs
+        self.folowersIDs = folowersIDs
     }
     
 }

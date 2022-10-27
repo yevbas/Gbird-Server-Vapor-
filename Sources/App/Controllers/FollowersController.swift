@@ -19,22 +19,35 @@ struct FollowersController: RouteCollection {
         
         if let sql = req.db as? SQLDatabase, let toFollowID = req.parameters.get("toFollowID"), let followerID = req.parameters.get("followerID") {
             
-            #warning("Remake from toFollowID -> userinfo id")
-            let userInfo = try? await sql.raw("SELECT * FROM userinfo")
+            let folowerInfo = try? await sql.raw("SELECT * FROM userinfo")
                 .all(decoding: UserInfo.self)
-                .filter {
-                    $0.userID.uuidString == followerID
-                }
+                .filter { $0.userID.uuidString == followerID }
+                .first
+            let folowingInfo = try? await sql.raw("SELECT * FROM userinfo")
+                .all(decoding: UserInfo.self)
+                .filter { $0.userID.uuidString == toFollowID }
                 .first
             
-            guard let userInfo = userInfo else {
+            guard let folowerInfo = folowerInfo else {
                 response.error = "Can't find follower!"
                 return response
             }
             
-            userInfo.folowingsIDs.append(toFollowID)
+            guard let folowingInfo = folowingInfo else {
+                response.error = "Can't find folowing!"
+                return response
+            }
             
-            try? await userInfo.save(on: req.db)
+            guard !folowerInfo.folowingsIDs.contains(toFollowID) else {
+                response.error = "Already followed!"
+                return response
+            }
+            
+            folowingInfo.folowersIDs.append(followerID)
+            folowerInfo.folowingsIDs.append(toFollowID)
+            
+            try? await folowerInfo.update(on: req.db)
+            try? await folowingInfo.update(on: req.db)
             
             response.success = "ok"
             
@@ -52,22 +65,32 @@ struct FollowersController: RouteCollection {
            let toUnfollowID = req.parameters.get("toUnfollowID"),
            let followerID = req.parameters.get("followerID") {
             
-            #warning("Remake from toUnfollowID -> userinfo id")
-            let userInfo = try? await sql.raw("SELECT * FROM userinfo")
+            let folowerInfo = try? await sql.raw("SELECT * FROM userinfo")
                 .all(decoding: UserInfo.self)
-                .filter {
-                    $0.userID.uuidString == followerID
-                }
+                .filter { $0.userID.uuidString == followerID }
+                .first
+            let folowingInfo = try? await sql.raw("SELECT * FROM userinfo")
+                .all(decoding: UserInfo.self)
+                .filter { $0.userID.uuidString == toUnfollowID }
                 .first
             
-            guard let userInfo = userInfo else {
+            guard let folowerInfo = folowerInfo else {
                 response.error = "Can't find follower!"
                 return response
             }
             
-            userInfo.folowingsIDs.remove(at: userInfo.folowingsIDs.firstIndex(of: toUnfollowID) ?? .init())
+            guard folowerInfo.folowingsIDs.contains(toUnfollowID) else {
+                response.error = "You don't follow this user!"
+                return response
+            }
             
-            try? await userInfo.save(on: req.db)
+            folowerInfo.folowingsIDs
+                .remove(at: folowerInfo.folowingsIDs.firstIndex(of: toUnfollowID) ?? .init())
+            folowingInfo?.folowersIDs
+                .remove(at: folowingInfo?.folowersIDs.firstIndex(of: followerID) ?? .init())
+            
+            try? await folowerInfo.update(on: req.db)
+            try? await folowingInfo?.update(on: req.db)
             
             response.success = "ok"
             

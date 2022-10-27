@@ -16,6 +16,8 @@ final class Post: Model, Content {
     
     @Field(key: "ownerID")
     var ownerID: UUID
+    @Field(key: "ownerName")
+    var ownerName: String
     @Field(key: "content")
     var content: String
     
@@ -30,6 +32,7 @@ final class Post: Model, Content {
     
     init(id: UUID? = nil,
          ownerID: UUID,
+         ownerName: String,
          content: String,
          
          timeInterval: Double = Date().timeIntervalSince1970,
@@ -38,6 +41,7 @@ final class Post: Model, Content {
     ) {
         self.id = id
         self.ownerID = ownerID
+        self.ownerName = ownerName
         self.content = content
         self.timeInterval = timeInterval
         self.likes = likes

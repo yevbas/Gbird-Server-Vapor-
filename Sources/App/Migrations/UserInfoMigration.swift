@@ -13,7 +13,9 @@ struct UserInfoMigration: AsyncMigration {
             .id()
             .field("userID", .uuid, .required)
             .field("postsIDs", .array(of: .string), .required)
+            .field("userName", .string, .required)
             .field("folowingsIDs", .array(of: .string), .required)
+            .field("folowersIDs", .array(of: .string), .required)
             .create()
     }
     

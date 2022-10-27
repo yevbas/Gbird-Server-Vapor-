@@ -12,6 +12,7 @@ struct PostMigration: AsyncMigration {
         try await database.schema("posts")
             .id()
             .field("ownerID", .uuid, .required)
+            .field("ownerName", .string, .required)
             .field("content", .string, .required)
             .field("timeInterval", .double)
             .field("likes", .int64)
