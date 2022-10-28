@@ -6,6 +6,7 @@ struct PostController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         let posts = routes.grouped("posts")
         posts.get(use: index)
+        posts.get("fresh", ":userID", use: fresh)
         posts.get(":ownerID", use: indexByOwnerID)
         posts.post(use: create)
     }
@@ -19,33 +20,36 @@ struct PostController: RouteCollection {
         return []
     }
     
-    // followingposts/:followerID
-//    func indexByFollowersID(req: Request) async throws -> [Post] {
-//        guard let followerID = req.parameters.get("followerID") else {
-//            throw Abort(.notFound)
-//        }
-//
-//        if let sql = req.db as? SQLDatabase {
-//            let usersInfo = try await sql.raw("SELECT * FROM userinfo")
-//                .all(decoding: UserInfo.self)
-//                .filter { $0.userID.uuidString == followerID }
-//                .first
-//
-//
-//            var posts = [Post]()
-//
-//            usersInfo?.folowingsIDs.forEach { followingID in
-//                try await sql.raw("SELECT * FROM users")
-//                    .all(decoding: UserInfo.self)
-//                    .filter { $0.userID.uuidStringq == followerID }
-//            }
-//
-//
-//        }
+    // posts/fresh/:userID
+    func fresh(req: Request) async throws -> [Post] {
+        guard let userID = req.parameters.get("userID") else {
+            throw Abort(.notFound)
+        }
         
-//        return []
-//    }
-    
+        if let sql = req.db as? SQLDatabase {
+            var posts: [Post] = []
+            
+            let userInfo = try await sql.raw("SELECT * FROM userinfo")
+                .all(decoding: UserInfo.self)
+                .filter { $0.userID.uuidString == userID }
+                .first
+            
+            guard let folowingsIDs = userInfo?.folowingsIDs else {
+                throw Abort(.notFound)
+            }
+            
+            for id in folowingsIDs {
+                let folowingPosts = try await sql.raw("SELECT * FROM posts")
+                    .all(decoding: Post.self)
+                    .filter { $0.ownerID.uuidString == id }
+                
+                posts.append(contentsOf: folowingPosts)
+            }
+            
+            return posts
+        }
+        return []
+    }
     
     // posts/:ownerID
     func indexByOwnerID(req: Request) async throws -> [Post] {
