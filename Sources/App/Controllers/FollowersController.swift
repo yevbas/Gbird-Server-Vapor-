@@ -65,6 +65,7 @@ struct FollowersController: RouteCollection {
            let toUnfollowID = req.parameters.get("toUnfollowID"),
            let followerID = req.parameters.get("followerID") {
             
+            #warning("Remake from toUnfollowID -> userinfo id")
             let folowerInfo = try? await sql.raw("SELECT * FROM userinfo")
                 .all(decoding: UserInfo.self)
                 .filter { $0.userID.uuidString == followerID }

@@ -89,6 +89,7 @@ struct PostController: RouteCollection {
             
             // SET CURRENT DATE FOR POST
             post.timeInterval = Date().timeIntervalSince1970
+            post.feedbackIDs = []
             post.likes = []
             
             // SAVING POST

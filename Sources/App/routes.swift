@@ -28,6 +28,7 @@ func routes(_ app: Application) throws {
     try app.register(collection: PostController())
     try app.register(collection: AuthCollection())
     try app.register(collection: FollowersController())
+    try app.register(collection: FeedbackCollection())
 }
 
 struct SearchedUser: Content {
