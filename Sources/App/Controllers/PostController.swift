@@ -8,8 +8,11 @@ struct PostController: RouteCollection {
         posts.get(use: index)
         posts.get("fresh", ":userID", use: fresh)
         posts.get(":ownerID", use: indexByOwnerID)
+        posts.put("like", use: toggleLike)
         posts.post(use: create)
     }
+    
+    
     
     // posts
     func index(req: Request) async throws -> [Post] {
@@ -86,6 +89,7 @@ struct PostController: RouteCollection {
             
             // SET CURRENT DATE FOR POST
             post.timeInterval = Date().timeIntervalSince1970
+            post.likes = []
             
             // SAVING POST
             try await post.save(on: req.db)
@@ -105,6 +109,43 @@ struct PostController: RouteCollection {
         }
         
         
+        return response
+    }
+    
+    // PUT posts/like
+    // - userID
+    // - postID
+    func toggleLike(req: Request) async throws -> Response  {
+        struct Body: Codable {
+            let userID, postID: String
+        }
+        
+        var response = Response()
+        
+        guard let byteBuffer = req.body.data else {
+            response.error = "No body was provided!"
+            return response
+        }
+        
+        let body = try JSONDecoder().decode(Body.self, from: Data(buffer: byteBuffer))
+        
+        guard let post = try await Post.find(UUID(uuidString: body.postID), on: req.db) else {
+            response.error = "Cant't find post with this ID!"
+            return response
+        }
+        
+        let postWasLikedPreviously = (post.likes ?? []).contains(body.userID)
+        
+        if postWasLikedPreviously {
+            post.likes?.removeAll(where: { $0 == body.userID } )
+        } else {
+            post.likes?.append(body.userID)
+        }
+        
+        try await post.update(on: req.db)
+        
+        response.success = "ok"
+    
         return response
     }
 }

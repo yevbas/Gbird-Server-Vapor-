@@ -24,7 +24,7 @@ final class Post: Model, Content {
     @Field(key: "timeInterval")
     var timeInterval: Double?
     @Field(key: "likes")
-    var likes: Int?
+    var likes: [String]?
     @Field(key: "feedbackIDs")
     var feedbackIDs: [String]?
     
@@ -34,9 +34,8 @@ final class Post: Model, Content {
          ownerID: UUID,
          ownerName: String,
          content: String,
-         
          timeInterval: Double = Date().timeIntervalSince1970,
-         likes: Int = 0,
+         likes: [String] = [],
          feedbackIDs: [String] = []
     ) {
         self.id = id

@@ -15,7 +15,7 @@ struct PostMigration: AsyncMigration {
             .field("ownerName", .string, .required)
             .field("content", .string, .required)
             .field("timeInterval", .double)
-            .field("likes", .int64)
+            .field("likes", .array(of: .string))
             .field("feedbackIDs", .array(of: .string))
             .create()
     }
