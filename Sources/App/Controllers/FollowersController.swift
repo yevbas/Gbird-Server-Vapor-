@@ -14,92 +14,82 @@ struct FollowersController: RouteCollection {
         routes.put("unfollow", ":toUnfollowID", ":followerID", use: unfollow)
     }
     
-    func follow(req: Request) async throws -> Response {
-        var response = Response()
+    func follow(req: Request) async throws -> ServerResponse<String> {
+        guard let sql = req.db as? SQLDatabase,
+              let toFollowID = req.parameters.get("toFollowID"),
+              let followerID = req.parameters.get("followerID") else {
+            throw Abort(.notFound)
+        }
+            
+        let folowerInfo = try? await sql.raw("SELECT * FROM userinfo")
+            .all(decoding: UserInfo.self)
+            .filter { $0.userID.uuidString == followerID }
+            .first
+        let folowingInfo = try? await sql.raw("SELECT * FROM userinfo")
+            .all(decoding: UserInfo.self)
+            .filter { $0.userID.uuidString == toFollowID }
+            .first
         
-        if let sql = req.db as? SQLDatabase, let toFollowID = req.parameters.get("toFollowID"), let followerID = req.parameters.get("followerID") {
-            
-            let folowerInfo = try? await sql.raw("SELECT * FROM userinfo")
-                .all(decoding: UserInfo.self)
-                .filter { $0.userID.uuidString == followerID }
-                .first
-            let folowingInfo = try? await sql.raw("SELECT * FROM userinfo")
-                .all(decoding: UserInfo.self)
-                .filter { $0.userID.uuidString == toFollowID }
-                .first
-            
-            guard let folowerInfo = folowerInfo else {
-                response.error = "Can't find follower!"
-                return response
-            }
-            
-            guard let folowingInfo = folowingInfo else {
-                response.error = "Can't find folowing!"
-                return response
-            }
-            
-            guard !folowerInfo.folowingsIDs.contains(toFollowID) else {
-                response.error = "Already followed!"
-                return response
-            }
-            
-            folowingInfo.folowersIDs.append(followerID)
-            folowerInfo.folowingsIDs.append(toFollowID)
-            
-            try? await folowerInfo.update(on: req.db)
-            try? await folowingInfo.update(on: req.db)
-            
-            response.success = "ok"
-            
-            return response
+        guard let folowerInfo = folowerInfo else {
+            throw Abort(.badRequest, reason: "Can't find follower")
         }
         
-        response.error = "Error: /follow/:userID"
-        return response
+        guard let folowingInfo = folowingInfo else {
+            throw Abort(.badRequest, reason: "Can't find folowing")
+        }
+        
+        guard !folowerInfo.folowingsIDs.contains(toFollowID) else {
+            throw Abort(.badRequest, reason: "Already followed")
+        }
+        
+        folowingInfo.folowersIDs.append(followerID)
+        folowerInfo.folowingsIDs.append(toFollowID)
+        
+        try? await folowerInfo.update(on: req.db)
+        try? await folowingInfo.update(on: req.db)
+        
+        return .init(code: HTTPStatus.ok.code,
+                     message: HTTPStatus.ok.reasonPhrase,
+                     data: nil
+        )
     }
     
-    func unfollow(req: Request) async throws -> Response {
-        var response = Response()
-        
-        if let sql = req.db as? SQLDatabase,
-           let toUnfollowID = req.parameters.get("toUnfollowID"),
-           let followerID = req.parameters.get("followerID") {
-            
-            #warning("Remake from toUnfollowID -> userinfo id")
-            let folowerInfo = try? await sql.raw("SELECT * FROM userinfo")
-                .all(decoding: UserInfo.self)
-                .filter { $0.userID.uuidString == followerID }
-                .first
-            let folowingInfo = try? await sql.raw("SELECT * FROM userinfo")
-                .all(decoding: UserInfo.self)
-                .filter { $0.userID.uuidString == toUnfollowID }
-                .first
-            
-            guard let folowerInfo = folowerInfo else {
-                response.error = "Can't find follower!"
-                return response
-            }
-            
-            guard folowerInfo.folowingsIDs.contains(toUnfollowID) else {
-                response.error = "You don't follow this user!"
-                return response
-            }
-            
-            folowerInfo.folowingsIDs
-                .remove(at: folowerInfo.folowingsIDs.firstIndex(of: toUnfollowID) ?? .init())
-            folowingInfo?.folowersIDs
-                .remove(at: folowingInfo?.folowersIDs.firstIndex(of: followerID) ?? .init())
-            
-            try? await folowerInfo.update(on: req.db)
-            try? await folowingInfo?.update(on: req.db)
-            
-            response.success = "ok"
-            
-            return response
+    func unfollow(req: Request) async throws -> ServerResponse<String> {
+        guard let sql = req.db as? SQLDatabase,
+              let toUnfollowID = req.parameters.get("toUnfollowID"),
+              let followerID = req.parameters.get("followerID") else {
+            throw Abort(.notFound)
         }
         
-        response.error = "Error: /unfollow/:userID"
-        return response
+        let folowerInfo = try? await sql.raw("SELECT * FROM userinfo")
+            .all(decoding: UserInfo.self)
+            .filter { $0.userID.uuidString == followerID }
+            .first
+        let folowingInfo = try? await sql.raw("SELECT * FROM userinfo")
+            .all(decoding: UserInfo.self)
+            .filter { $0.userID.uuidString == toUnfollowID }
+            .first
+        
+        guard let folowerInfo = folowerInfo else {
+            throw Abort(.badRequest, reason: "Can't find follower")
+        }
+        
+        guard folowerInfo.folowingsIDs.contains(toUnfollowID) else {
+            throw Abort(.badRequest, reason: "You don't follow this user")
+        }
+        
+        folowerInfo.folowingsIDs
+            .remove(at: folowerInfo.folowingsIDs.firstIndex(of: toUnfollowID) ?? .init())
+        folowingInfo?.folowersIDs
+            .remove(at: folowingInfo?.folowersIDs.firstIndex(of: followerID) ?? .init())
+        
+        try? await folowerInfo.update(on: req.db)
+        try? await folowingInfo?.update(on: req.db)
+        
+        return .init(code: HTTPStatus.ok.code,
+                     message: HTTPStatus.ok.reasonPhrase,
+                     data: nil
+        )
     }
     
 }

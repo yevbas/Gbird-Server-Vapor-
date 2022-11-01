@@ -16,23 +16,37 @@ struct UserInfoController: RouteCollection {
     }
     
     // /user-info
-    func index(req: Request) async throws -> [UserInfo] {
-        if let sql = req.db as? SQLDatabase {
-            let userInfo = try? await sql.raw("SELECT * FROM userinfo")
-                .all(decoding: UserInfo.self)
-            return userInfo ?? []
+    func index(req: Request) async throws -> ServerResponse<[UserInfo]> {
+        guard let sql = req.db as? SQLDatabase else {
+            throw Abort(.notFound)
         }
-        return []
+        let allUsersInformation = try await sql.raw("SELECT * FROM userinfo")
+            .all(decoding: UserInfo.self)
+        
+        return .init(code: HTTPStatus.ok.code,
+                     message: HTTPStatus.ok.reasonPhrase,
+                     data: allUsersInformation
+        )
     }
     
     // /user-info/:userID
-    func userInfoByID(req: Request) async throws -> [UserInfo] {
-        if let sql = req.db as? SQLDatabase, let userID = req.parameters.get("userID") {
-            let userInfo = try? await sql.raw("SELECT * FROM userinfo")
-                .all(decoding: UserInfo.self)
-                .filter { $0.userID.uuidString == userID }
-            return userInfo ?? []
+    func userInfoByID(req: Request) async throws -> ServerResponse<UserInfo> {
+        guard let userID = req.parameters.get("userID"),
+              let sql = req.db as? SQLDatabase else {
+            throw Abort(.notFound)
         }
-        return []
+        
+        let filteredUsersInfo = try? await sql.raw("SELECT * FROM userinfo")
+            .all(decoding: UserInfo.self)
+            .filter { $0.userID.uuidString == userID }
+        
+        guard let userInfo = filteredUsersInfo?.first else {
+            throw Abort(.notFound)
+        }
+        
+        return .init(code: HTTPStatus.ok.code,
+                     message: HTTPStatus.ok.reasonPhrase,
+                     data: userInfo
+        )
     }
 }

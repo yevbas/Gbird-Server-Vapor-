@@ -22,28 +22,33 @@ struct AuthCollection: RouteCollection {
     }
     
     // auth/login
-    func enter(req: Request) async throws -> Response {
-        var response = Response()
+    func enter(req: Request) async throws -> ServerResponse<UserInfo> {
+        guard let sql = req.db as? SQLDatabase else  {
+            throw Abort(.notFound)
+        }
+        let users = try await sql.raw("SELECT * FROM users")
+            .all(decoding: User.self)
         
-        if let sql = req.db as? SQLDatabase {
-            let users = try await sql.raw("SELECT * FROM users")
-                .all(decoding: User.self)
-            
-            guard let byteBuffer = req.body.data else {
-                response.error = "No body was provided!"
-                return response
-            }
-            let authCreds = try JSONDecoder().decode(AuthCollection.AuthCredentials.self, from: Data(buffer: byteBuffer))
-            
-            guard let user = users.first(where: { $0.email == authCreds.email && $0.password == authCreds.password }) else {
-                response.error = "Email or password is incorrect!"
-                return response
-            }
-            
-            response.success = user.id?.uuidString
-            return response
+        guard let byteBuffer = req.body.data else {
+            throw Abort(.badRequest, reason: "No body was provided")
+        }
+        let authCreds = try JSONDecoder().decode(AuthCollection.AuthCredentials.self, from: Data(buffer: byteBuffer))
+        
+        guard let user = users.first(where: { $0.email == authCreds.email && $0.password == authCreds.password }) else {
+            throw Abort(.badRequest, reason: "Email or password is incorrect")
         }
         
-        return response
+        let filteredUserInfo = try await sql.raw("SELECT * FROM userinfo")
+            .all(decoding: UserInfo.self)
+            .filter { $0.userID == user.id }
+        
+        guard let userInfo = filteredUserInfo.first else {
+            throw Abort(.notFound)
+        }
+        
+        return .init(code: HTTPStatus.accepted.code,
+                     message: HTTPStatus.accepted.reasonPhrase,
+                     data: userInfo
+        )
     }
 }

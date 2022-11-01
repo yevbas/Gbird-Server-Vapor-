@@ -5,7 +5,7 @@ import Fluent
 struct UserController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         let users = routes.grouped("users")
-        users.get(use: index)
+        users.get(use: allUsers)
         users.post(use: create)
         users.group(":userID") { todo in
             todo.delete(use: delete)
@@ -13,52 +13,55 @@ struct UserController: RouteCollection {
     }
     
     // users
-    func index(req: Request) async throws -> [User] {
-        if let sql = req.db as? SQLDatabase {
-           return try await sql.raw("SELECT * FROM users")
-                .all(decoding: User.self)
+    func allUsers(req: Request) async throws -> ServerResponse<[User]> {
+        guard let sql = req.db as? SQLDatabase else {
+            throw Abort(.notFound)
         }
-        return []
+        let users = try await sql.raw("SELECT * FROM users")
+            .all(decoding: User.self)
+        
+        return .init(code: HTTPStatus.ok.code,
+                     message: HTTPStatus.ok.reasonPhrase,
+                     data: users
+        )
     }
     
     // users
-    func create(req: Request) async throws -> Response {
-        var response = Response()
+    func create(req: Request) async throws -> ServerResponse<UserInfo> {
+        guard  let sql = req.db as? SQLDatabase else {
+            throw Abort(.notFound)
+        }
+        let users = try await sql.raw("SELECT * FROM users")
+            .all(decoding: User.self)
         
-        if let sql = req.db as? SQLDatabase {
-            let users = try await sql.raw("SELECT * FROM users")
-                .all(decoding: User.self)
-            
-            guard let byteBuffer = req.body.data else {
-                response.error = "No body was provided!"
-                return response
-            }
-            let user = try JSONDecoder().decode(User.self, from: Data(buffer: byteBuffer))
-            
-            guard user.email != "", user.password != "", user.login != "" else {
-                response.error = "Enter data to create account!"
-                return response
-            }
-            
-            guard !users.contains(where: { $0 == user }) else {
-                response.error = "User with this email already exists!"
-                return response
-            }
-            guard !users.contains(where: { $0.login == user.login}) else {
-                response.error = "User with this login already exists!"
-                return response
-            }
-            try await user.save(on: req.db)
-            
-            let userInfo = UserInfo(userID: user.id ?? .init(), userName: user.login)
-            
-            try await userInfo.save(on: req.db)
-            response.success = user.id?.uuidString ?? "status ok, no user id..."
-            return response
+        guard let byteBuffer = req.body.data else {
+            throw Abort(.badRequest, reason: "No body was found")
         }
         
-        return response
+        let user = try JSONDecoder().decode(User.self, from: Data(buffer: byteBuffer))
         
+        guard !user.email.isEmpty,
+              !user.password.isEmpty,
+              !user.login.isEmpty else {
+            throw Abort(.badRequest, reason: "Fill all fields to create account")
+        }
+        guard !users.contains(where: { $0 == user }) else {
+            throw Abort(.badRequest, reason: "User with this email already exists")
+        }
+        guard !users.contains(where: { $0.login == user.login}) else {
+            throw Abort(.badRequest, reason: "User with this login already exists")
+        }
+        
+        try await user.save(on: req.db)
+        
+        let userInfo = UserInfo(userID: user.id ?? .init(), userName: user.login)
+        
+        try await userInfo.save(on: req.db)
+        
+        return .init(code: HTTPStatus.created.code,
+                     message: HTTPStatus.created.reasonPhrase,
+                     data: userInfo
+        )
     }
     
     func delete(req: Request) async throws -> HTTPStatus {
@@ -71,3 +74,5 @@ struct UserController: RouteCollection {
 }
 
 
+//extension Abort: Codable {
+//}
