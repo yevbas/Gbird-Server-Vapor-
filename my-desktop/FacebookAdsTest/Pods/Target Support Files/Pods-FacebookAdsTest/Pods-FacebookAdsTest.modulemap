@@ -1,6 +1,0 @@
-framework module Pods_FacebookAdsTest {
-  umbrella header "Pods-FacebookAdsTest-umbrella.h"
-
-  export *
-  module * { export * }
-}

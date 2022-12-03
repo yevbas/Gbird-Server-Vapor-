@@ -1,0 +1,3 @@
+testDict_codility.txt
+test1_codility.txt
+mynew_codility.txt

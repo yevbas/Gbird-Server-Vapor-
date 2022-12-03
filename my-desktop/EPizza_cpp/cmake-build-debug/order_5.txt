@@ -1,19 +1,19 @@
 {
 order_id: 1
-client_name: Maciej
-client_phone: 127398127389
-address: Kanalowa
+client_name: j
+client_phone: 123
+address: dasd
 positions: 
    [ 
     - Section: 0
     - Position_name: 0
 
 
-    - Section: 0
-    - Position_name: 0
-
-
     - Section: 1
+    - Position_name: 2
+
+
+    - Section: 0
     - Position_name: 0
 
 
