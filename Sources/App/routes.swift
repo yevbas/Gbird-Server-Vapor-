@@ -16,7 +16,7 @@ func routes(_ app: Application) throws {
         if let sql = req.db as? SQLDatabase, let query = req.parameters.get("query") {
             let users = try? await sql.raw("SELECT * FROM users")
                 .all(decoding: User.self)
-                .filter { $0.login.contains(query) }
+                .filter { $0.login.lowercased().contains(query.lowercased()) }
                 .map { SearchedUser(id: $0.id?.uuidString ?? "", name: $0.login) }
             return users ?? []
         }
