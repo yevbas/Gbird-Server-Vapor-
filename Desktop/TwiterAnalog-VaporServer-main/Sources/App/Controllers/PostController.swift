@@ -7,7 +7,7 @@ struct PostController: RouteCollection {
         let posts = routes.grouped("posts")
         
         posts.get(use: index)
-//        posts.get(":postID", use: post)
+        posts.get("info", ":postID", use: getPost)
         posts.get(":ownerID", use: postByOwnerID)
         
         posts.get("fresh", ":userID", use: freshPostsByUserID)
@@ -38,6 +38,26 @@ struct PostController: RouteCollection {
         return .init(code: HTTPStatus.ok.code,
                      message: HTTPStatus.ok.reasonPhrase,
                      data: posts
+        )
+    }
+    
+    // posts/info/:postID
+    func getPost(req: Request) async throws -> ServerResponse<Post> {
+        guard let sql = req.db as? SQLDatabase else {
+            throw Abort(.notFound)
+        }
+        
+        let posts = try await sql.raw("SELECT * FROM posts")
+            .all(decoding: Post.self)
+            .filter { $0.id?.uuidString == req.parameters.get("postID") }
+        
+        guard let post = posts.first else {
+            throw Abort(.notFound)
+        }
+        
+        return .init(code: HTTPStatus.ok.code,
+                     message: HTTPStatus.ok.reasonPhrase,
+                     data: post
         )
     }
     
