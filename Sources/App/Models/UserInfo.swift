@@ -8,6 +8,10 @@
 import Fluent
 import Vapor
 
+extension FieldKey {
+    static let imageURL: FieldKey = "image_url"
+}
+
 final class UserInfo: Model, Content {
     
     static var schema: String = "userinfo"
@@ -25,6 +29,9 @@ final class UserInfo: Model, Content {
     var folowingsIDs: [String]
     @Field(key: "folowersIDs")
     var folowersIDs: [String]
+    
+    @Field(key: .imageURL)
+    var imageURL: String?
     
     // folowersCount
     // folowingsCount

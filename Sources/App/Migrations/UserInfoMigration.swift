@@ -23,3 +23,21 @@ struct UserInfoMigration: AsyncMigration {
         try await database.schema("userinfo").delete()
     }
 }
+
+// MARK: - IMAGE SAVING
+
+struct UserInfoImageURLMigration: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database
+            .schema(UserInfo.schema)
+            .field(.imageURL, .string)
+            .update()
+    }
+    
+    func revert(on database: Database) async throws {
+        try await database
+            .schema(UserInfo.schema)
+            .deleteField(.imageURL)
+            .update()
+    }
+}
