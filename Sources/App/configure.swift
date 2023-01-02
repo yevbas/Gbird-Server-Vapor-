@@ -14,9 +14,9 @@ public func configure(_ app: Application) throws {
         password: Environment.get("DATABASE_PASSWORD") ?? "vapor_password",
         database: Environment.get("DATABASE_NAME") ?? "vapor_database"
     ), as: .psql)
-    
-    app.routes.defaultMaxBodySize = "10mb"
-    app.middleware.use(FileMiddleware(publicDirectory: app.directory.workingDirectory))
+        
+    app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
+    app.routes.defaultMaxBodySize = "50mb"
     
     app.migrations.add(UserMigration())
     app.migrations.add(UserInfoMigration())

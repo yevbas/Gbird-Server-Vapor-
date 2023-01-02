@@ -23,7 +23,7 @@ struct UserInfoController: RouteCollection {
         let userInfo = routes.grouped("userinfo")
         userInfo.get(use: index)
         userInfo.get(":userID", use: userInfoByID)
-        userInfo.get(":userID", "upload-image", use: uploadImage)
+        userInfo.post(":userID", "upload-image", use: uploadImage)
     }
     
     // userinfo/:userID/upload-image
@@ -31,15 +31,13 @@ struct UserInfoController: RouteCollection {
     // -filename: String
     // -data: Data
     func uploadImage(req: Request) async throws -> ServerResponse<UserInfo> {
-            
-        let file = try req.content.decode(File.self)
-        
-        try await req.fileio.writeFile(file.data, at: file.filename)
         
         guard let userID = req.parameters.get("userID"),
               let sql = req.db as? SQLDatabase else {
             throw Abort(.notFound)
         }
+        
+        let file = try req.content.decode(File.self)
         
         let filteredUsersInfo = try? await sql.raw("SELECT * FROM userinfo")
             .all(decoding: UserInfo.self)
@@ -49,10 +47,19 @@ struct UserInfoController: RouteCollection {
             throw Abort(.notFound)
         }
         
+        let uploadPath = req.application.directory.publicDirectory + "users-images/"
+        let fileName =
+        "img-profile-"
+        + userInfo.userID.uuidString.lowercased()
+        + (file.extension == nil ? "" : "." + file.extension!)
+        
+        try await req.fileio.writeFile(file.data, at: uploadPath + fileName)
+        
         let serverConfig = req.application.http.server.configuration
         let hostname = serverConfig.hostname
         let port = serverConfig.port
-        userInfo.imageURL = "\(hostname):\(port)/\(file.filename)"
+        
+        userInfo.imageURL = "http://\(hostname):\(port)/users-images/\(fileName)"
         
         try await userInfo.update(on: req.db)
         
