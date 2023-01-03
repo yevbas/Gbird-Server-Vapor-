@@ -8,10 +8,6 @@
 import Fluent
 import Vapor
 
-extension FieldKey {
-    static let imageURL: FieldKey = "image_url"
-}
-
 final class UserInfo: Model, Content {
     
     static var schema: String = "userinfo"
