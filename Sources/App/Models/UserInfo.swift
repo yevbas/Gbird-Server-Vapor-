@@ -24,34 +24,25 @@ final class UserInfo: Model, Content {
     @Field(key: "userName")
     var userName: String
     @Field(key: "postsIDs")
+    
     var postsIDs: [String]
     @Field(key: "folowingsIDs")
     var folowingsIDs: [String]
     @Field(key: "folowersIDs")
     var folowersIDs: [String]
-    
     @Field(key: .imageURL)
     var imageURL: String?
-    
-    // folowersCount
-    // folowingsCount
-    
+        
     init() {}
     
-    init(id: UUID? = nil,
-         userID: UUID,
-         
-         userName: String = "",
-         postsIDs: [String] = [],
-         folowingsIDs: [String] = [],
-         folowersIDs: [String] = []
-    ){
-        self.id = id
+    init(userID: UUID, userName: String) {
         self.userID = userID
         self.userName = userName
-        self.postsIDs = postsIDs
-        self.folowingsIDs = folowingsIDs
-        self.folowersIDs = folowersIDs
+        
+        self.postsIDs = []
+        self.folowingsIDs = []
+        self.folowersIDs = []
+        self.imageURL = nil
     }
     
 }

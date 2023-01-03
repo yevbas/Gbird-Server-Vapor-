@@ -14,7 +14,6 @@ struct UserMigration: AsyncMigration {
             .field("login", .string, .required)
             .field("email", .string, .required)
             .field("password", .string, .required)
-//            .field("posts", .array(of: .string))
             .create()
     }
     

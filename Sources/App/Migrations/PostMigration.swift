@@ -14,9 +14,10 @@ struct PostMigration: AsyncMigration {
             .field("ownerID", .uuid, .required)
             .field("ownerName", .string, .required)
             .field("content", .string, .required)
-            .field("timeInterval", .double)
-            .field("likes", .array(of: .string))
-            .field("feedbackIDs", .array(of: .string))
+        
+            .field("timeInterval", .double, .required)
+            .field("likes", .array(of: .string), .required)
+            .field("feedbackIDs", .array(of: .string), .required)
             .create()
     }
     func revert(on database: Database) async throws {

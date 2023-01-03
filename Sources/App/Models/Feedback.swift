@@ -20,30 +20,24 @@ final class Feedback: Model, Content {
     var postID: UUID
     @Field(key: "ownerName")
     var ownerName: String
+    
     @Field(key: "feedback")
     var feedback: String
     @Field(key: "timeInterval")
-    var timeInterval: Double?
+    var timeInterval: Double
     @Field(key: "likes")
-    var likes: [String]?
+    var likes: [String]
     
     init() {}
     
-    init(id: UUID? = nil,
-         ownerID: UUID,
-         postID: UUID,
-         ownerName: String,
-         feedback: String,
-         timeInterval: Double = Date().timeIntervalSince1970,
-         likes: [String] = []
-    ) {
-        self.id = id
+    init(ownerID: UUID, postID: UUID, ownerName: String, feedback: String) {
         self.ownerID = ownerID
         self.postID = postID
         self.ownerName = ownerName
         self.feedback = feedback
-        self.timeInterval = timeInterval
-        self.likes = likes
+
+        self.timeInterval = Date().timeIntervalSince1970
+        self.likes = []
     }
     
 }

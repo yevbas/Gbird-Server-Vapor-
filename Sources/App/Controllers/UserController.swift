@@ -6,10 +6,33 @@ struct UserController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         let users = routes.grouped("users")
         users.get(use: allUsers)
+        users.get(":query", use: searchUsers)
         users.post(use: create)
         users.group(":userID") { todo in
             todo.delete(use: delete)
         }
+    }
+    
+    // users/:query
+    func searchUsers(req: Request) async throws -> ServerResponse<[SearchedUser]> {
+        guard let sql = req.db as? SQLDatabase,
+              let lowercasedQuery = req.parameters.get("query")?.lowercased() else {
+            throw Abort(.notFound)
+        }
+        let users = try await sql.raw("SELECT * FROM userinfo")
+            .all(decoding: UserInfo.self)
+            .filter { $0.userName.lowercased().contains(lowercasedQuery) }
+            .map {
+                SearchedUser(
+                    id: $0.userID.uuidString,
+                    name: $0.userName,
+                    imageURL: $0.imageURL
+                )
+            }
+        return .init(code: HTTPStatus.ok.code,
+                     message: HTTPStatus.ok.reasonPhrase,
+                     data: users
+        )
     }
     
     // users
@@ -55,7 +78,7 @@ struct UserController: RouteCollection {
         try await user.save(on: req.db)
         
         let userInfo = UserInfo(userID: user.id ?? .init(), userName: user.login)
-        
+                
         try await userInfo.save(on: req.db)
         
         return .init(code: HTTPStatus.created.code,
@@ -72,7 +95,3 @@ struct UserController: RouteCollection {
         return .noContent
     }
 }
-
-
-//extension Abort: Codable {
-//}

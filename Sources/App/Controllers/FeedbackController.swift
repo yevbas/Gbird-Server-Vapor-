@@ -53,7 +53,7 @@ struct FeedbackCollection: RouteCollection {
             throw Abort(.notFound)
         }
         
-        post?.feedbackIDs?.append(feedbackID)
+        post?.feedbackIDs.append(feedbackID)
         
         try await post?.update(on: req.db)
                 
@@ -81,12 +81,12 @@ struct FeedbackCollection: RouteCollection {
             throw Abort(.badRequest, reason: "Cant't find feedback with this ID!")
         }
         
-        let postWasLikedPreviously = (feedback.likes ?? []).contains(body.userID)
+        let postWasLikedPreviously = feedback.likes.contains(body.userID)
         
         if postWasLikedPreviously {
-            feedback.likes?.removeAll(where: { $0 == body.userID } )
+            feedback.likes.removeAll(where: { $0 == body.userID } )
         } else {
-            feedback.likes?.append(body.userID)
+            feedback.likes.append(body.userID)
         }
         
         try await feedback.update(on: req.db)

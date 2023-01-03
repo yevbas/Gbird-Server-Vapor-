@@ -22,29 +22,22 @@ final class Post: Model, Content {
     var content: String
     
     @Field(key: "timeInterval")
-    var timeInterval: Double?
+    var timeInterval: Double
     @Field(key: "likes")
-    var likes: [String]?
+    var likes: [String]
     @Field(key: "feedbackIDs")
-    var feedbackIDs: [String]?
+    var feedbackIDs: [String]
     
     init() {}
     
-    init(id: UUID? = nil,
-         ownerID: UUID,
-         ownerName: String,
-         content: String,
-         timeInterval: Double = Date().timeIntervalSince1970,
-         likes: [String] = [],
-         feedbackIDs: [String] = []
-    ) {
-        self.id = id
+    init(ownerID: UUID, ownerName: String, content: String) {
         self.ownerID = ownerID
         self.ownerName = ownerName
         self.content = content
-        self.timeInterval = timeInterval
-        self.likes = likes
-        self.feedbackIDs = feedbackIDs
+        
+        self.timeInterval = Date().timeIntervalSince1970
+        self.likes = []
+        self.feedbackIDs = []
     }
     
 }

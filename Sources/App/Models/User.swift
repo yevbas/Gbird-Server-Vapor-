@@ -28,13 +28,7 @@ final class User: Model, Content {
     
     init() {}
     
-    #warning("This init is what should we provide in request body !!!")
-    init(id: UUID? = nil,
-         email: String,
-         password: String,
-         login: String
-    ){
-        self.id = id
+    init(email: String, password: String, login: String) {
         self.email = email
         self.password = password
         self.login = login

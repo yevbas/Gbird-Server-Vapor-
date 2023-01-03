@@ -98,6 +98,13 @@ struct PostController: RouteCollection {
     
     // posts
     func create(req: Request) async throws -> ServerResponse<Post> {
+        
+        struct Body: Codable {
+            let ownerID: UUID
+            let ownerName: String
+            let content: String
+        }
+        
         guard let sql = req.db as? SQLDatabase else {
             throw Abort(.notFound)
         }
@@ -109,16 +116,13 @@ struct PostController: RouteCollection {
             throw Abort(.badRequest, reason: "No body was found")
         }
         
-        let post = try JSONDecoder().decode(Post.self, from: Data(buffer: byteBuffer))
+        let body = try JSONDecoder().decode(Body.self, from: Data(buffer: byteBuffer))
         
-        guard let userInfo = usersInfo.filter({ $0.userID == post.ownerID }).first else {
+        guard let userInfo = usersInfo.filter({ $0.userID == body.ownerID }).first else {
             throw Abort(.notFound)
         }
         
-        // SET CURRENT DATE FOR POST
-        post.timeInterval = Date().timeIntervalSince1970
-        post.feedbackIDs = []
-        post.likes = []
+        let post = Post(ownerID: body.ownerID, ownerName: body.ownerName, content: body.content)
         
         // SAVING POST
         try await post.save(on: req.db)
@@ -156,12 +160,12 @@ struct PostController: RouteCollection {
             throw Abort(.badRequest, reason: "Cant't find post with this ID")
         }
         
-        let postWasLikedPreviously = (post.likes ?? []).contains(body.userID)
+        let postWasLikedPreviously = (post.likes).contains(body.userID)
         
         if postWasLikedPreviously {
-            post.likes?.removeAll(where: { $0 == body.userID } )
+            post.likes.removeAll(where: { $0 == body.userID } )
         } else {
-            post.likes?.append(body.userID)
+            post.likes.append(body.userID)
         }
         
         try await post.update(on: req.db)
