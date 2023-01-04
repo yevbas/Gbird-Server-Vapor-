@@ -7,8 +7,12 @@ func routes(_ app: Application) throws {
         "It works!"
     }
 
+    app.get { req async in
+        "It works!"
+    }
+    
     app.get("hello") { req async -> String in
-        "Hello, world!"
+        "Hello, world!s"
     }
 
     try app.register(collection: UserController())
