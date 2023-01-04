@@ -1,8 +1,8 @@
 # exclude everything
-users-images/*
+Public/users-images/*
 
 # exception to the rule
-!users-images/.gitkeep 
+!Public/users-images/.gitkeep 
 
 Packages
 .build
