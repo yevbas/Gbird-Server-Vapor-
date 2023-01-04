@@ -27,7 +27,6 @@ final class Post: Model, Content {
     var likes: [String]
     @Field(key: "feedbackIDs")
     var feedbackIDs: [String]
-    
     @Field(key: .imageURL)
     var imageURL: String?
     

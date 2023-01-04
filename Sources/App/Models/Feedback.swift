@@ -20,13 +20,15 @@ final class Feedback: Model, Content {
     var postID: UUID
     @Field(key: "ownerName")
     var ownerName: String
-    
     @Field(key: "feedback")
     var feedback: String
+    
     @Field(key: "timeInterval")
     var timeInterval: Double
     @Field(key: "likes")
     var likes: [String]
+    @Field(key: .imageURL)
+    var imageURL: String?
     
     init() {}
     
@@ -36,6 +38,7 @@ final class Feedback: Model, Content {
         self.ownerName = ownerName
         self.feedback = feedback
 
+        self.imageURL = nil
         self.timeInterval = Date().timeIntervalSince1970
         self.likes = []
     }

@@ -36,26 +36,46 @@ struct FeedbackCollection: RouteCollection {
     
     // feedback
     func create(req: Request) async throws -> ServerResponse<Feedback> {
+        
         guard let byteBuffer = req.body.data else {
-            throw Abort(.badRequest, reason: "No body was provided")
+            throw Abort(.badRequest, reason: "Request body is empty.")
         }
         
-        let feedback = try JSONDecoder().decode(Feedback.self, from: Data(buffer: byteBuffer))
+        guard let sql = req.db as? SQLDatabase else {
+            throw Abort(.badRequest)
+        }
         
-        feedback.timeInterval = Date().timeIntervalSince1970
-        feedback.likes = []
+        struct Body: Codable {
+            let ownerID: UUID
+            let postID: UUID
+            let ownerName: String
+            let feedback: String
+            
+            func transformToFeedbackModel() -> Feedback {
+                .init(ownerID: ownerID, postID: postID, ownerName: ownerName, feedback: feedback)
+            }
+        }
+        
+        let feedback = try JSONDecoder().decode(Body.self, from: Data(buffer: byteBuffer)).transformToFeedbackModel()
+        
+        guard let post = try await Post.find(feedback.postID, on: req.db) else {
+            throw Abort(.notFound, reason: "Post don't exist or wasn't found.")
+        }
+        
+        guard let ownerinfo = try await sql.raw("SELECT * FROM userinfo")
+            .all(decoding: UserInfo.self)
+            .first(where: { $0.userID == feedback.ownerID } ) else {
+            
+            throw Abort(.notFound, reason: "Person who left feedback don't exist or wasn't found.")
+        }
+        
+        feedback.imageURL = ownerinfo.imageURL
         
         try await feedback.save(on: req.db)
-
-        let post = try await Post.find(feedback.postID, on: req.db)
         
-        guard let feedbackID = feedback.id?.uuidString else {
-            throw Abort(.notFound)
-        }
+        post.feedbackIDs.append(feedback.id!.uuidString)
         
-        post?.feedbackIDs.append(feedbackID)
-        
-        try await post?.update(on: req.db)
+        try await post.update(on: req.db)
                 
         return .init(code: HTTPStatus.created.code,
                      message: HTTPStatus.created.reasonPhrase,

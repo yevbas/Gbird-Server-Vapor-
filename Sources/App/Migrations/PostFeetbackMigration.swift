@@ -23,3 +23,21 @@ struct PostFeedbackMigration: AsyncMigration {
         try await database.schema("postfeedbacks").delete()
     }
 }
+
+// MARK: - IMAGE SAVING
+
+struct PostFeedbackImageURLMigration: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database
+            .schema(Feedback.schema)
+            .field(.imageURL, .string)
+            .update()
+    }
+    
+    func revert(on database: Database) async throws {
+        try await database
+            .schema(Feedback.schema)
+            .deleteField(.imageURL)
+            .update()
+    }
+}

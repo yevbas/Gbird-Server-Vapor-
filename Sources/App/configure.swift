@@ -24,6 +24,7 @@ public func configure(_ app: Application) throws {
     app.migrations.add(PostMigration())
     app.migrations.add(PostImageURLMigration())
     app.migrations.add(PostFeedbackMigration())
+    app.migrations.add(PostFeedbackImageURLMigration())
     
     try app.autoMigrate().wait()
     

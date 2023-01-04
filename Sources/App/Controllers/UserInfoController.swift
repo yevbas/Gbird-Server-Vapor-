@@ -75,6 +75,14 @@ struct UserInfoController: RouteCollection {
                 $0.update(on: req.db )
             }
         
+        try await sql.raw("SELECT * FROM postfeedbacks")
+            .all(decoding: Feedback.self)
+            .filter { $0.ownerID.uuidString == userInfo.userID.uuidString }
+            .forEach {
+                $0.imageURL = url
+                $0.update(on: req.db )
+            }
+        
         return .init(
             code: HTTPStatus.ok.code,
             message: HTTPStatus.ok.reasonPhrase,
@@ -109,6 +117,14 @@ struct UserInfoController: RouteCollection {
         
         try await sql.raw("SELECT * FROM posts")
             .all(decoding: Post.self)
+            .filter { $0.ownerID.uuidString == userinfo.userID.uuidString }
+            .forEach {
+                $0.imageURL = nil
+                $0.update(on: req.db )
+            }
+        
+        try await sql.raw("SELECT * FROM postfeedbacks")
+            .all(decoding: Feedback.self)
             .filter { $0.ownerID.uuidString == userinfo.userID.uuidString }
             .forEach {
                 $0.imageURL = nil
