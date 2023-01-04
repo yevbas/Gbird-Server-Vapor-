@@ -28,6 +28,9 @@ final class Post: Model, Content {
     @Field(key: "feedbackIDs")
     var feedbackIDs: [String]
     
+    @Field(key: .imageURL)
+    var imageURL: String?
+    
     init() {}
     
     init(ownerID: UUID, ownerName: String, content: String) {

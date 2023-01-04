@@ -24,3 +24,19 @@ struct PostMigration: AsyncMigration {
         try await database.schema("posts").delete()
     }
 }
+
+struct PostImageURLMigration: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database
+            .schema(Post.schema)
+            .field(.imageURL, .string)
+            .update()
+    }
+    
+    func revert(on database: Database) async throws {
+        try await database
+            .schema(Post.schema)
+            .deleteField(.imageURL)
+            .update()
+    }
+}

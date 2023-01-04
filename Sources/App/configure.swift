@@ -17,11 +17,12 @@ public func configure(_ app: Application) throws {
         
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
     app.routes.defaultMaxBodySize = "50mb"
-    
+        
     app.migrations.add(UserMigration())
     app.migrations.add(UserInfoMigration())
     app.migrations.add(UserInfoImageURLMigration())
     app.migrations.add(PostMigration())
+    app.migrations.add(PostImageURLMigration())
     app.migrations.add(PostFeedbackMigration())
     
     try app.autoMigrate().wait()

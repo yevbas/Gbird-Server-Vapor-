@@ -124,6 +124,8 @@ struct PostController: RouteCollection {
         
         let post = Post(ownerID: body.ownerID, ownerName: body.ownerName, content: body.content)
         
+        post.imageURL = userInfo.imageURL
+        
         // SAVING POST
         try await post.save(on: req.db)
         

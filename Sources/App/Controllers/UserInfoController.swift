@@ -23,7 +23,9 @@ struct UserInfoController: RouteCollection {
         let userInfo = routes.grouped("userinfo")
         userInfo.get(use: index)
         userInfo.get(":userID", use: userInfoByID)
-        userInfo.post(":userID", "upload-image", use: uploadImage)
+        
+        userInfo.put(":userID", "delete-image", use: deleteImage)
+        userInfo.put(":userID", "upload-image", use: uploadImage)
     }
     
     // userinfo/:userID/upload-image
@@ -59,14 +61,64 @@ struct UserInfoController: RouteCollection {
         let hostname = serverConfig.hostname
         let port = serverConfig.port
         
-        userInfo.imageURL = "http://\(hostname):\(port)/users-images/\(fileName)"
+        let url = "http://\(hostname):\(port)/users-images/\(fileName)"
+        
+        userInfo.imageURL = url
         
         try await userInfo.update(on: req.db)
+        
+        try await sql.raw("SELECT * FROM posts")
+            .all(decoding: Post.self)
+            .filter { $0.ownerID.uuidString == userInfo.userID.uuidString }
+            .forEach {
+                $0.imageURL = url
+                $0.update(on: req.db )
+            }
         
         return .init(
             code: HTTPStatus.ok.code,
             message: HTTPStatus.ok.reasonPhrase,
             data: userInfo
+        )
+    }
+    
+    // PUT userinfo/:userID/delete-image
+    func deleteImage(req: Request) async throws -> ServerResponse<UserInfo> {
+        
+        guard let id = req.parameters.get("userID"),
+              let sql = req.db as? SQLDatabase else {
+            throw Abort(.badRequest)
+        }
+        
+        let filteredUsersInfo = try? await sql.raw("SELECT * FROM userinfo")
+            .all(decoding: UserInfo.self)
+            .filter { $0.userID.uuidString == id }
+        
+        guard let userinfo = filteredUsersInfo?.first else {
+            throw Abort(.notFound, reason: "No user with this \(id).")
+        }
+                
+        let fileName = "img-profile-\(userinfo.userID.uuidString.lowercased()).jpg"
+        let imageFilePath = req.application.directory.publicDirectory + "users-images/\(fileName)"
+        
+        try FileManager.default.removeItem(atPath: imageFilePath)
+                
+        userinfo.imageURL = nil
+        
+        try await userinfo.update(on: req.db)
+        
+        try await sql.raw("SELECT * FROM posts")
+            .all(decoding: Post.self)
+            .filter { $0.ownerID.uuidString == userinfo.userID.uuidString }
+            .forEach {
+                $0.imageURL = nil
+                $0.update(on: req.db )
+            }
+        
+        return .init(
+            code: HTTPStatus.ok.code,
+            message: HTTPStatus.ok.reasonPhrase,
+            data: userinfo
         )
     }
     
