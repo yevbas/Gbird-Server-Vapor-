@@ -1,3 +1,9 @@
+# exclude everything
+users-images/*
+
+# exception to the rule
+!users-images/.gitkeep 
+
 Packages
 .build
 xcuserdata
